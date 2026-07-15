@@ -548,15 +548,42 @@ services:
 
 ### Trae
 
+**方式 A：通过 IDE 界面添加**
+
 设置 → MCP → 添加自定义 MCP 服务：
 
 **服务 1（出图）：**
 - 类型：`Streamable HTTP`
-- URL：`http://127.0.0.1:9104/pixelle/mcp`
+- URL：`http://127.0.0.1:9104/mcp`
 
 **服务 2（纯提示词）：**
 - 类型：`SSE`
 - URL：`http://127.0.0.1:9105/sse`
+
+**方式 B：直接编辑配置文件**
+
+Trae 的 MCP 配置文件位置：
+- Windows：`%APPDATA%\TRAE SOLO CN\User\mcp.json`
+- macOS：`~/.trae/User/mcp.json`
+
+在 `mcpServers` 下添加两个服务：
+
+```json
+{
+  "mcpServers": {
+    "cinematic-pixelle": {
+      "type": "http",
+      "url": "http://127.0.0.1:9104/mcp"
+    },
+    "cinematic-composer": {
+      "type": "sse",
+      "url": "http://127.0.0.1:9105/sse"
+    }
+  }
+}
+```
+
+> 若已有其他 MCP 服务，只需把 `cinematic-pixelle` 和 `cinematic-composer` 两个对象合并到现有 `mcpServers` 下即可。修改后需重启 Trae 或在 MCP 面板点击刷新按钮。
 
 ### Cursor
 
@@ -566,7 +593,7 @@ services:
 {
   "mcpServers": {
     "cinematic-pixelle": {
-      "url": "http://127.0.0.1:9104/pixelle/mcp"
+      "url": "http://127.0.0.1:9104/mcp"
     },
     "cinematic-composer": {
       "url": "http://127.0.0.1:9105/sse"
@@ -584,7 +611,7 @@ services:
   "mcpServers": {
     "cinematic-pixelle": {
       "type": "http",
-      "url": "http://127.0.0.1:9104/pixelle/mcp"
+      "url": "http://127.0.0.1:9104/mcp"
     },
     "cinematic-composer": {
       "type": "sse",
