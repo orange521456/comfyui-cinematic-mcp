@@ -101,8 +101,8 @@
 ### 步骤 0：克隆仓库
 
 ```bash
-git clone https://github.com/<your-username>/cinematic-mcp.git
-cd cinematic-mcp
+git clone https://github.com/orange521456/comfyui-cinematic-mcp.git
+cd comfyui-cinematic-mcp
 ```
 
 ### 步骤 1：拉取 Pixelle-MCP 子项目
@@ -192,7 +192,7 @@ cd /path/to/your/ComfyUI/custom_nodes
 git clone https://github.com/twri/sdxl_prompt_styler.git
 
 # 将本项目的五层预设复制到 sdxl_prompt_styler 目录
-cp /path/to/cinematic-mcp/prompt_composer/presets/cinematic_*.json /path/to/your/ComfyUI/custom_nodes/sdxl_prompt_styler/
+cp /path/to/comfyui-cinematic-mcp/prompt_composer/presets/cinematic_*.json /path/to/your/ComfyUI/custom_nodes/sdxl_prompt_styler/
 ```
 
 预设文件位置：`prompt_composer/presets/cinematic_light.json` 等 5 个文件。
@@ -664,7 +664,7 @@ icacls comfyui_output /grant Everyone:F
 ## 项目结构
 
 ```
-cinematic-mcp/
+comfyui-cinematic-mcp/
 ├── docker-compose.yml              # 三容器编排
 ├── .env.example                   # 配置模板
 ├── .gitignore
