@@ -1,0 +1,18 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY prompt_composer/requirements.txt ./requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY prompt_composer/ ./prompt_composer/
+
+ENV PYTHONPATH=/app/prompt_composer
+
+# FastMCP 服务配置（容器内需绑定 0.0.0.0）
+ENV FASTMCP_HOST=0.0.0.0
+ENV FASTMCP_PORT=9005
+
+EXPOSE 9005
+
+CMD ["python", "prompt_composer/mcp_server.py", "--http"]

@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  # ComfyUI 渲染服务 — 在容器内运行，避免 Trae Agent 沙箱写入限制
+  # 使用 NVIDIA runtime 直通 GPU（支持 Blackwell RTX 5060 sm_120）
+  comfyui:
+    build:
+      context: ./comfyui-docker
+      dockerfile: Dockerfile
+    ports:
+      - "8188:8188"
+    volumes:
+      # ComfyUI 源代码（host 的 C:\Users\17386\ComfyUI）
+      - /c/Users/17386/ComfyUI:/app/ComfyUI
+      # 输出目录（本地工作目录内，Trae Agent 可访问）
+      - ./comfyui_output:/output
+      # 输入目录（img2img 用）
+      - ./comfyui_input:/input
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8188/system_stats')"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 90s
+
+  # Pixelle MCP — 将 ComfyUI 工作流转为 MCP 工具
+  pixelle:
+    build: ./Pixelle-MCP
+    ports:
+      - "9104:9004"
+    volumes:
+      - ./data:/app/data
+      - ./.env:/app/.env:ro
+      # 让 Pixelle 可读 ComfyUI 输出图片
+      - ./comfyui_output:/app/data/comfyui_output:ro
+    environment:
+      - COMFYUI_BASE_URL=http://comfyui:8188
+    depends_on:
+      comfyui:
+        condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9004/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # Cinematic Prompt Composer — 纯提示词合成 MCP（不生图）
+  prompt-composer:
+    build:
+      context: .
+      dockerfile: Dockerfile.prompt_composer
+    ports:
+      - "9105:9005"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:9005/sse')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s

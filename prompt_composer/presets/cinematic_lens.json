@@ -1,0 +1,9 @@
+[
+    {"name":"lens_35mm_anamorphic","prompt":"{prompt}, 35mm anamorphic lens, 2.39:1 widescreen, oval bokeh, horizontal flares, cinematic depth of field","negative_prompt":"phone camera, flat perspective, square frame"},
+    {"name":"lens_85mm_portrait","prompt":"{prompt}, 85mm portrait lens, shallow depth of field, creamy bokeh background, flattering compression, subject separation","negative_prompt":"wide angle distortion, deep focus, busy background"},
+    {"name":"lens_24mm_wide_env","prompt":"{prompt}, 24mm wide angle, expansive environment, strong perspective, subject in context, immersive scale","negative_prompt":"tight crop, flat compression, claustrophobic"},
+    {"name":"lens_macro_detail","prompt":"{prompt}, macro lens, extreme close-up detail, razor-thin depth of field, intricate textures, hyperreal surface","negative_prompt":"distant shot, deep focus, wide scene"},
+    {"name":"lens_dutch_tilt","prompt":"{prompt}, dutch angle tilt, diagonal horizon, disorienting composition, psychological tension, canted frame","negative_prompt":"level horizon, stable composition, balanced"},
+    {"name":"lens_200mm_telephoto","prompt":"{prompt}, 200mm telephoto compression, flattened perspective, distant subject brought close, layered background, compressed depth","negative_prompt":"wide angle, expansive perspective distortion"},
+    {"name":"lens_low_angle","prompt":"{prompt}, low angle hero shot, camera tilted upward, towering subject, dominant presence, monumental scale","negative_prompt":"high angle, bird's eye, diminishing subject"}
+]

@@ -1,0 +1,8 @@
+[
+    {"name":"texture_real_skin","prompt":"{prompt}, hyperreal skin texture, visible pores, subsurface scattering, natural imperfections, microscopic skin detail","negative_prompt":"plastic skin, smooth airbrushed, porcelain, waxy"},
+    {"name":"texture_film_grain","prompt":"{prompt}, organic film grain, 35mm Kodak stock texture, subtle noise pattern, analog emulsion character","negative_prompt":"digital clean, noise-free, smooth digital, plastic"},
+    {"name":"texture_metal_wet","prompt":"{prompt}, wet metallic surface texture, water droplets, reflective sheen, oxidation patina, liquid metal gloss","negative_prompt":"dry matte, dull surface, flat metal"},
+    {"name":"texture_fabric_weave","prompt":"{prompt}, detailed fabric weave texture, visible threads, micro-fiber detail, textile microstructure, cloth surface realism","negative_prompt":"smooth plastic fabric, flat textureless cloth"},
+    {"name":"texture_weathered_patina","prompt":"{prompt}, weathered patina surface, aged materials, oxidation, worn edges, environmental aging, textured decay","negative_prompt":"pristine new, factory fresh, untouched surface"},
+    {"name":"texture_glass_translucent","prompt":"{prompt}, translucent glass material, refraction, caustics, subsurface light transmission, frosted surface detail","negative_prompt":"opaque, solid, flat non-reflective"}
+]

@@ -1,0 +1,10 @@
+[
+    {"name":"story_rule_of_thirds","prompt":"{prompt}, rule of thirds composition, subject placed on intersection points, balanced negative space, harmonious framing","negative_prompt":"dead center composition, cluttered frame, unbalanced"},
+    {"name":"story_center_symmetry","prompt":"{prompt}, centered symmetrical composition, perfect balance, formal framing, monumental stability, Kubrick-esque one-point perspective","negative_prompt":"asymmetric, off-balance, tilted, casual framing"},
+    {"name":"story_leading_lines","prompt":"{prompt}, leading lines composition, converging geometric lines drawing eye to subject, strong perspective depth, architectural guides","negative_prompt":"scattered composition, no depth cues, flat arrangement"},
+    {"name":"story_closeup_portrait","prompt":"{prompt}, emotional close-up portrait, face fills frame, intimate psychological focus, shallow background, micro-expression detail","negative_prompt":"wide shot, distant subject, environment dominant"},
+    {"name":"story_environmental_wide","prompt":"{prompt}, environmental wide shot, full figure within vast landscape, human scale against nature, expansive context, establishing shot","negative_prompt":"close crop, claustrophobic, no environment"},
+    {"name":"story_dutch_angle","prompt":"{prompt}, dutch angle tension composition, canted horizon, psychological unease, off-kilter frame, noir disorientation","negative_prompt":"level stable composition, calm balanced framing"},
+    {"name":"story_over_shoulder","prompt":"{prompt}, over-the-shoulder shot, dialogue framing, partial foreground silhouette, spatial relationship between subjects, cinematic coverage","negative_prompt":"single subject centered, flat front view"},
+    {"name":"story_low_angle_hero","prompt":"{prompt}, low angle hero composition, camera below subject looking up, monumental dominance, empowering perspective, mythic scale","negative_prompt":"high angle, diminishing, vulnerable perspective"}
+]

@@ -1,0 +1,195 @@
+{
+  "1": {
+    "inputs": {
+      "value": "a young woman with flowing hair, standing in a misty forest, melancholic and serene"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "$prompt.value!:主体+场景+情绪描述(英文效果最佳)"
+    }
+  },
+  "2": {
+    "inputs": {
+      "value": "blurry, deformed, low quality, watermark, text"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "$negative_prompt.value:全局负向提示词"
+    }
+  },
+  "3": {
+    "inputs": {
+      "ckpt_name": "sdXL_v10VAEFix.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "加载检查点"
+    }
+  },
+  "10": {
+    "inputs": {
+      "text_positive": ["1", 0],
+      "text_negative": ["2", 0],
+      "style": "light_golden_hour",
+      "log_prompt": false,
+      "style_positive": true,
+      "style_negative": true
+    },
+    "class_type": "SDXLPromptStyler",
+    "_meta": {
+      "title": "$light_style.style:光线风格(light_golden_hour)"
+    }
+  },
+  "11": {
+    "inputs": {
+      "text_positive": ["10", 0],
+      "text_negative": ["10", 1],
+      "style": "lens_85mm_portrait",
+      "log_prompt": false,
+      "style_positive": true,
+      "style_negative": true
+    },
+    "class_type": "SDXLPromptStyler",
+    "_meta": {
+      "title": "$lens_style.style:镜头风格(lens_85mm_portrait)"
+    }
+  },
+  "12": {
+    "inputs": {
+      "text_positive": ["11", 0],
+      "text_negative": ["11", 1],
+      "style": "color_teal_orange",
+      "log_prompt": false,
+      "style_positive": true,
+      "style_negative": true
+    },
+    "class_type": "SDXLPromptStyler",
+    "_meta": {
+      "title": "$color_style.style:色彩风格(color_teal_orange)"
+    }
+  },
+  "13": {
+    "inputs": {
+      "text_positive": ["12", 0],
+      "text_negative": ["12", 1],
+      "style": "texture_real_skin",
+      "log_prompt": false,
+      "style_positive": true,
+      "style_negative": true
+    },
+    "class_type": "SDXLPromptStyler",
+    "_meta": {
+      "title": "$texture_style.style:材质风格(texture_real_skin)"
+    }
+  },
+  "14": {
+    "inputs": {
+      "text_positive": ["13", 0],
+      "text_negative": ["13", 1],
+      "style": "story_rule_of_thirds",
+      "log_prompt": false,
+      "style_positive": true,
+      "style_negative": true
+    },
+    "class_type": "SDXLPromptStyler",
+    "_meta": {
+      "title": "$story_style.style:叙事风格(story_rule_of_thirds)"
+    }
+  },
+  "20": {
+    "inputs": {
+      "text": ["14", 0],
+      "clip": ["3", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "正向CLIP编码"
+    }
+  },
+  "21": {
+    "inputs": {
+      "text": ["14", 1],
+      "clip": ["3", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "负向CLIP编码"
+    }
+  },
+  "30": {
+    "inputs": {
+      "value": 1024
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "$width.value:图像宽度"
+    }
+  },
+  "31": {
+    "inputs": {
+      "value": 1024
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "$height.value:图像高度"
+    }
+  },
+  "32": {
+    "inputs": {
+      "width": ["30", 0],
+      "height": ["31", 0],
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "空Latent图像"
+    }
+  },
+  "40": {
+    "inputs": {
+      "seed": 123456789,
+      "steps": 25,
+      "cfg": 7.0,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 1.0,
+      "model": ["3", 0],
+      "positive": ["20", 0],
+      "negative": ["21", 0],
+      "latent_image": ["32", 0]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "采样器"
+    }
+  },
+  "50": {
+    "inputs": {
+      "samples": ["40", 0],
+      "vae": ["3", 2]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "60": {
+    "inputs": {
+      "filename_prefix": "cinematic",
+      "images": ["50", 0]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  },
+  "99": {
+    "inputs": {
+      "value": "五层电影级视觉生成工具。通过光线(LIGHT)/镜头(LENS)/色彩(COLOR)/材质(TEXTURE)/叙事(STORY)五层分层提示词优化，生成专业电影级画面。每层可选择不同风格预设，支持自定义组合。使用SDXL基础模型。"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "MCP"
+    }
+  }
+}

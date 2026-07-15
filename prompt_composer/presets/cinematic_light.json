@@ -1,0 +1,10 @@
+[
+    {"name":"light_golden_hour","prompt":"{prompt}, golden hour rim lighting, warm directional sunlight, soft volumetric haze, long shadows","negative_prompt":"flat lighting, harsh clipping, blown highlights"},
+    {"name":"light_blue_hour","prompt":"{prompt}, blue hour ambient light, cool diffused illumination, twilight tones, soft sky bounce","negative_prompt":"oversaturated, harsh highlights, midday sun"},
+    {"name":"light_rim_back","prompt":"{prompt}, dramatic rim lighting, strong backlight, glowing silhouette edges, separation from background","negative_prompt":"flat lighting, washed out subject"},
+    {"name":"light_chiaroscuro","prompt":"{prompt}, chiaroscuro lighting, deep shadows, single hard source, high contrast, painterly falloff","negative_prompt":"flat, low contrast, muddy shadows"},
+    {"name":"light_neon_noir","prompt":"{prompt}, neon noir lighting, magenta and cyan practical lights, wet reflective surfaces, moody glow","negative_prompt":"natural daylight, flat ambient"},
+    {"name":"light_soft_diffuse","prompt":"{prompt}, soft diffused beauty light, wraparound key, gentle falloff, even skin illumination","negative_prompt":"hard specular highlights, deep hard shadows"},
+    {"name":"light_godrays","prompt":"{prompt}, volumetric god rays, shafts of light through atmosphere, atmospheric perspective, dusty air","negative_prompt":"clean flat air"},
+    {"name":"light_lowkey_candle","prompt":"{prompt}, low-key candlelight, warm flickering single source, deep surrounding shadows, intimate mood","negative_prompt":"bright, high-key, flat"}
+]

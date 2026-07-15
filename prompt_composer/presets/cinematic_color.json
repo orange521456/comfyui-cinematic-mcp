@@ -1,0 +1,9 @@
+[
+    {"name":"color_teal_orange","prompt":"{prompt}, teal and orange color grade, complementary contrast, warm skin tones against cool shadows, blockbuster film grade","negative_prompt":"monochromatic, flat color, muted palette"},
+    {"name":"color_bleach_bypass","prompt":"{prompt}, bleach bypass color grade, desaturated tones, crushed blacks, high contrast, silver-retained film look","negative_prompt":"oversaturated, soft pastel, low contrast"},
+    {"name":"color_low_sat_cold","prompt":"{prompt}, low saturation cold color grade, muted blues and grays, melancholic atmosphere, desaturated highlights","negative_prompt":"warm tones, vibrant saturation, sunny palette"},
+    {"name":"color_warm_analog","prompt":"{prompt}, warm analog film color grade, amber and rust tones, golden skin, nostalgic filmic warmth","negative_prompt":"cool blues, digital sharpness, clinical palette"},
+    {"name":"color_noir_mono","prompt":"{prompt}, noir monochrome, pure black and white, deep crushed blacks, silver highlights, high contrast grayscale","negative_prompt":"color, sepia, low contrast gray, muddy"},
+    {"name":"color_pastel_dreamy","prompt":"{prompt}, pastel dreamy color grade, soft pink and lavender, hazy diffusion, ethereal highlights, gentle saturation","negative_prompt":"harsh contrast, deep blacks, saturated primaries"},
+    {"name":"color_portra400","prompt":"{prompt}, Portra 400 film emulation, warm skin tones, subtle grain, natural saturation, cinematic film stock character","negative_prompt":"digital clinical look, harsh digital sharpness, oversaturation"}
+]

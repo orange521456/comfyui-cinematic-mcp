@@ -1,0 +1,139 @@
+{
+  "1": {
+    "inputs": {
+      "image": "example.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "$origin_image.image~!:上一轮生成图片(本地路径或URL)"
+    }
+  },
+  "2": {
+    "inputs": {
+      "value": "a young woman with flowing hair, standing in a misty forest, sunset side backlight with volumetric haze"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "$prompt.value!:修改后的提示词(原提示词+修改描述)"
+    }
+  },
+  "3": {
+    "inputs": {
+      "value": "blurry, deformed, low quality, watermark, text"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "$negative_prompt.value:负向提示词"
+    }
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "sdXL_v10VAEFix.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "加载检查点"
+    }
+  },
+  "10": {
+    "inputs": {
+      "text_positive": ["2", 0],
+      "text_negative": ["3", 0],
+      "style": "light_golden_hour",
+      "log_prompt": false,
+      "style_positive": true,
+      "style_negative": true
+    },
+    "class_type": "SDXLPromptStyler",
+    "_meta": {
+      "title": "$style.style:层风格预设(light_golden_hour)"
+    }
+  },
+  "20": {
+    "inputs": {
+      "text": ["10", 0],
+      "clip": ["4", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "正向CLIP编码"
+    }
+  },
+  "21": {
+    "inputs": {
+      "text": ["10", 1],
+      "clip": ["4", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "负向CLIP编码"
+    }
+  },
+  "30": {
+    "inputs": {
+      "pixels": ["1", 0],
+      "vae": ["4", 2]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE编码"
+    }
+  },
+  "40": {
+    "inputs": {
+      "value": 0.6
+    },
+    "class_type": "PrimitiveFloat",
+    "_meta": {
+      "title": "$denoise.value:重绘强度(0.3轻微修改-0.8大幅修改)"
+    }
+  },
+  "41": {
+    "inputs": {
+      "seed": 987654321,
+      "steps": 25,
+      "cfg": 7.0,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": ["40", 0],
+      "model": ["4", 0],
+      "positive": ["20", 0],
+      "negative": ["21", 0],
+      "latent_image": ["30", 0]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "采样器(图生图)"
+    }
+  },
+  "50": {
+    "inputs": {
+      "samples": ["41", 0],
+      "vae": ["4", 2]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "60": {
+    "inputs": {
+      "filename_prefix": "cinematic_refine",
+      "images": ["50", 0]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  },
+  "99": {
+    "inputs": {
+      "value": "分层精修工具。加载上一轮生成的图片，通过修改提示词并选择单一层风格(light/lens/color/texture/story)重新生成。denoise控制修改幅度：0.3轻微微调，0.8大幅修改。"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "MCP"
+    }
+  }
+}
