@@ -554,7 +554,7 @@ services:
 
 **服务 1（出图）：**
 - 类型：`Streamable HTTP`
-- URL：`http://127.0.0.1:9104/mcp`
+- URL：`http://127.0.0.1:9104/pixelle/mcp`
 
 **服务 2（纯提示词）：**
 - 类型：`SSE`
@@ -573,7 +573,7 @@ Trae 的 MCP 配置文件位置：
   "mcpServers": {
     "cinematic-pixelle": {
       "type": "http",
-      "url": "http://127.0.0.1:9104/mcp"
+      "url": "http://127.0.0.1:9104/pixelle/mcp"
     },
     "cinematic-composer": {
       "type": "sse",
@@ -593,7 +593,7 @@ Trae 的 MCP 配置文件位置：
 {
   "mcpServers": {
     "cinematic-pixelle": {
-      "url": "http://127.0.0.1:9104/mcp"
+      "url": "http://127.0.0.1:9104/pixelle/mcp"
     },
     "cinematic-composer": {
       "url": "http://127.0.0.1:9105/sse"
@@ -611,7 +611,7 @@ Trae 的 MCP 配置文件位置：
   "mcpServers": {
     "cinematic-pixelle": {
       "type": "http",
-      "url": "http://127.0.0.1:9104/mcp"
+      "url": "http://127.0.0.1:9104/pixelle/mcp"
     },
     "cinematic-composer": {
       "type": "sse",
