@@ -553,7 +553,7 @@ services:
 设置 → MCP → 添加自定义 MCP 服务：
 
 **服务 1（出图）：**
-- 类型：`Streamable HTTP`
+- 类型：`streamable`（Streamable HTTP）
 - URL：`http://127.0.0.1:9104/pixelle/mcp`
 
 **服务 2（纯提示词）：**
@@ -572,7 +572,7 @@ Trae 的 MCP 配置文件位置：
 {
   "mcpServers": {
     "cinematic-pixelle": {
-      "type": "http",
+      "type": "streamable",
       "url": "http://127.0.0.1:9104/pixelle/mcp"
     },
     "cinematic-composer": {
@@ -610,7 +610,7 @@ Trae 的 MCP 配置文件位置：
 {
   "mcpServers": {
     "cinematic-pixelle": {
-      "type": "http",
+      "type": "streamable",
       "url": "http://127.0.0.1:9104/pixelle/mcp"
     },
     "cinematic-composer": {
